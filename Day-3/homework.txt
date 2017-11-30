@@ -1,0 +1,3 @@
+1)take two number from user via prompt and display sum in console without using parseInt method
+2) take three number from user and print the greatest
+3) take a number from user and tell it is even or odd
