@@ -1,0 +1,14 @@
+Q1) make a small program for a company who wants to caclulate salary of its employes
+if a employee has a experience of 0-5 years he/she will recive a bonus of 5000
+if a employee has a experience of 6-10 years he/she will recive a bonus of 10000
+if a employee has a experience of 10-15 years he/she will recive a bonus of 15000
+if a employee has a experience of 15+ years he/she will recive a bonus of 20000
+basic salary is fix 10000
+_____________________________________________________________________________
+Q2) print sum of first 17 intigers.
+_____________________________________________________________________________
+Q3)Print sum of first 34 even intigers.
+_____________________________________________________________________________
+Q4)take input number of terms of fibonacci series.
+_____________________________________________________________________________
+Q5)Take a number as input and print it is prime or not.

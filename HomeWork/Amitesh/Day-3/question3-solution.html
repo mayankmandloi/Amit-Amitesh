@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="value_container">
+
+    </div>
+ <script>
+ var value = +window.prompt("Enter Value");
+
+if(value%2 == 0){
+    document.getElementById("value_container").innerHTML = "This is Even Value";
+}else{
+    document.getElementById("value_container").innerHTML = "This is Odd Value";
+}
+
+var check_value = value%2;
+
+console.log(value);
+console.log(check_value);
+ </script>
+    
+</body>
+</html>
