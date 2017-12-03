@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>calculator</title>
+</head>
+<body>
+    <div id="value"></div>
+    
+</body>
+
+
+<script>
+
+var basicsalary=10000;
+
+var experience= +window.prompt("Enter the experience");
+
+if (experience>=0 && experience<=5)
+    
+    document.getElementById("value").innerHTML = basicsalary+5000;
+
+ else if (experience>=6 && experience<=10)
+
+ document.getElementById("value").innerHTML = basicsalary+10000;  
+
+ else if (experience>=11 && experience<=15)
+
+ document.getElementById("value").innerHTML = basicsalary+15000;   
+
+ else if (experience>15)
+
+ document.getElementById("value").innerHTML = basicsalary+20000; 
+
+
+</script>
+
+
+</script>
+</html>

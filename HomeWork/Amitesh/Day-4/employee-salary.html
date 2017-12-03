@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>calculate employee salary</title>
+</head>
+<body>
+<script>
+var empp_experience =  +window.prompt("Please Enter You Experience in Years");
+var basic_salary = 10000;
+if(empp_experience >= 15)
+{
+    var bonus = 20000;
+    var totalsalary = bonus+basic_salary;
+    alert("You get "+bonus+" bonus, now your total salary is "+totalsalary );
+}
+else{
+    if(empp_experience >= 10 && empp_experience < 15)
+    {
+    var bonus = 15000;
+    var totalsalary = bonus+basic_salary;
+    alert("You get "+bonus+" bonus, now your total salary is "+totalsalary );
+    }
+    if(empp_experience >= 6 && empp_experience < 10)
+    {
+    var bonus = 10000;
+    var totalsalary = bonus+basic_salary;
+    alert("You get "+bonus+" bonus, now your total salary is "+totalsalary );
+    }else{
+    var bonus = 5000;
+    var totalsalary = bonus+basic_salary;
+    alert("You get "+bonus+" bonus, now your total salary is "+totalsalary );
+    }
+
+
+}
+
+console.log(empp_experience);
+</script>
+</body>
+</html>
