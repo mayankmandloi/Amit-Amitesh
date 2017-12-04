@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Bhumi--Functions</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function f1 ()
+    {
+        console.log("a function without parameter and return");
+    }
+    f1();
+    function f2(a,b) 
+    {
+        console.log(" I am a function with two parameters which are :- "+a+" & "+b);    
+    }
+    f2(23,"Mayank");
+    f2(23);
+
+    function f3() {
+        console.log("I am a function which returns a value");
+        return 23;
+    }
+    var a = f3();
+    console.log("a is "+a);
+    function f4(a,b)
+    {
+        return a+b;
+    }
+    var sum = f4(49,51);
+    console.log(sum);
+
+    var f5=function ()
+    {
+        console.log("mai ek bina naam ka function hu jise ek variable mai assign kara hai or mujhe first class function bhi bol sakte hai");
+    };
+
+    f5();
+
+    (function(){
+        console.log("mai ek 'IIF' function hu immediate invoke function jise baad mai use nahi kar sakte")
+    })();
+
+    window.alert(f2);
+</script>
+</html>
