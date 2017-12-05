@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    function f1() {
+        var a=10;
+        console.log(a);
+        
+    }
+    function f2(meraFunction) {
+        meraFunction();
+    };
+    window.f2(f1);
+    this.f2(f1);
+    f2(f1);
+    //f2(window.alert);
+    //alert("hahaha");
+    console.log(this);
+    console.log(window);
+    var bekaarObject=new f2(alert);
+    console.log(bekaarObject);
+    function f3() {
+        this.name="mayank";
+    }
+    var obj = new f3();
+    console.log(obj);
+    
+    console.log(name);
+</script>
+</html>

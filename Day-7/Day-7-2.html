@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var p1 = {name:"Amitesh",number:"10000000",address:"Indore"};
+
+    var personCreator= function (na,number,address)
+    {
+        this.name=na;
+        this.number=number;
+        this.address=address;
+    }
+    var p2 = new personCreator("Amit","29999999","Indore");
+    var p3 = new personCreator(window.prompt("name"),window.prompt("number"),window.prompt("address"));
+    p1.age="27";
+    p2.height="160cm";
+    console.log(p1);
+    console.log(p2);
+    console.log(p3);
+    console.log(p3.name);
+</script>
+</html>
