@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Bhumi</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var per1={name:"Amit",number:"9893164150",address:"Indore",showDetails:function(){
+        console.log("HI I am "+this.name+" I live at "+this.address+"  and you can reach me on "+this.number);
+    }};
+
+    var per2={name:"Amitesh",number:"9424459623",address:"Indore",showDetails:function(){
+        console.log("HI I am "+this.name+" I live at "+this.address+"  and you can reach me on "+this.number);
+    }};
+    per1.showDetails();
+    per2["showDetails"]();
+    window[window.prompt("enter any window function")]("Is this the function you ran???");
+    window.per1.showDetails();
+</script>
+</html>
