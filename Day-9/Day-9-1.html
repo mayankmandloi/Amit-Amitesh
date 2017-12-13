@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Bhumi</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <style>
+    .mov
+    {
+        box-shadow: 1px 1px 5px 1px black;
+        padding: 5px inherit;
+    }
+    </style>
+</head>
+<body>
+    <div id="main" class="row"></div>
+</body>
+<script src="movies.js"></script>
+<script>
+    for(i=0;i<movie.length;i++)
+    {
+        var mainDiv = document.createElement("div");
+        var titleTag= document.createElement("h3");
+        titleTag.innerHTML=movie[i].Title;
+        mainDiv.appendChild(titleTag);
+        var image = document.createElement("img");
+        image.src=movie[i].PosterPath;
+        mainDiv.appendChild(image);
+        var para=document.createElement("p");
+        para.innerHTML=movie[i].Description;
+        mainDiv.appendChild(para);
+        mainDiv.className="col-3 mov";
+        document.getElementById("main").appendChild(mainDiv);
+
+    }
+</script>
+</html>

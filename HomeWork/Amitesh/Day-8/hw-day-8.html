@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home Work Day-8</title>
+</head>
+<body>
+    <div id="listcontainer"></div>
+    <script src="movies.js"></script>
+    <script>
+        var listofarray = movie.length;
+        text = "<ul>";
+        for(i=0;i<listofarray;i++){
+            
+            document.getElementById("listcontainer").innerHTML += "<li><strong>"+i+"- "+movie[i].Title+"</strong>, "+movie[i].Description+"<br><br></li>";
+        }
+        text += "</ul>";
+
+
+        
+    </script>    
+</body>
+</html>
