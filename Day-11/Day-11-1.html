@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Bhumi</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr1 =[1,5,4,3,6,78,9,23,34,56,15];
+    var arr2=Object.create(arr1);
+    arr2.push(333);
+    console.log(arr1);
+    console.log(arr2.sort(
+        function(i1,i2)
+        {
+            return Math.random()*100-i1 ;
+        }
+        ));
+    for(i=0;i<arr1.length;i++)
+ {
+    console.log(arr1[i]);
+ }
+console.log("--------------------------------------------");
+ for(i=0;i<arr2.length;i++)
+ {
+     console.log(arr2[i]);
+ }
+</script>
+</html>
