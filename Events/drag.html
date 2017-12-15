@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+.droptarget {
+    float: left; 
+    width: 100px; 
+    height: 35px;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+</style>
+</head>
+<body>
+
+    <input type="text" name="" id="">
+    
+    <p draggable="true"  >Drag the p element back and forth between the two rectangles:</p>
+
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget">Drag me!</p>
+</div>
+
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<p style="clear:both;" draggable="true"><strong>Note:</strong> drag events are not supported in Internet Explorer 8 and earlier versions or Safari 5.1 and earlier versions.</p>
+
+<p id="demo"></p>
+
+<script>
+function dragStart(event) {
+    event.altKey=true;
+    event.dataTransfer.setData("Text", event.target.id);
+    event.dataTransfer.setData("Text", event.target.randomData);
+    console.log(event);
+    console.log(document.getElementById(event.target.id).innerHTML);
+}
+function dragging(event) {
+    document.getElementById("demo").innerHTML = "The p element is being dragged";
+}
+function allowDrop(event) {
+    event.preventDefault();
+}
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("Text");
+    var image = document.createElement("img");
+    if(event.target.id==event.dataTransfer.getData("Text"))
+    image.src=data;
+    event.target.appendChild(image);
+    console.log(data);
+//    event.target.innerHTML=data;  
+    //event.target.appendChild(document.getElementById(data));
+    //document.getElementById("demo").innerHTML = "The p element was dropped";
+}
+</script>
+
+</body>
+</html>
+
