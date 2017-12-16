@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Bhumi</title>
+    <style>
+        .error
+        {
+            border: 1px solid red;
+        }
+.error~span::after
+    {
+        content: "Please enter correct email id "
+    }
+    .sucess
+    {
+        border: 1px solid green;
+    }
+    </style>
+</head>
+<body>
+
+    <input type="text" name="email" id="email" onkeyup="testEmail(this)"><span></span>
+
+</body>
+<script>
+var regx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+function testEmail(element)
+{
+    if(regx.test(element.value))
+    {
+        element.className="sucess";
+    }
+    else
+    {
+        
+        element.className="error";
+    }
+}  
+</script>
+</html>

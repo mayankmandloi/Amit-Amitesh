@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+        <style>
+            .div1-1{
+                border: 1px solid #000;
+                background:#fff;
+                width:100px;
+                height:100px;
+            }
+
+            .div1-2{
+                border: 1px solid #000;
+                background:#fff;
+                width:150px;
+                height:80px;
+            }
+
+            .div1-3{
+                border: 1px solid #000;
+                background:#fff;
+                width:200px;
+                height:150px;
+            }
+
+            .div2-1{
+                border: 1px solid #000;
+                background:#000;
+                width:100px;
+                height:100px;
+            }
+
+            .div2-2{
+                border: 1px solid #000;
+                background:#000;
+                width:150px;
+                height:80px;
+            }
+
+            .div2-3{
+                border: 1px solid #000;
+                background:#000;
+                width:200px;
+                height:150px;
+            }
+            .div1-1:hover, .div1-2:hover, .div1-3:hover, .div2-1:hover, .div2-2:hover, .div2-3:hover{
+                border: 1px dashed #45cc06;
+            }
+        </style>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="div1-1" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget11"></div></div>
+            <div class="col-4" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="div1-2" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget12"></div></div>
+            <div class="col-4" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="div1-3" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget13"></div></div>
+        </div>
+        <div class="row" style="margin-top:200px;">
+                <div class="col-4" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="div2-1" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget21"></div></div>
+                <div class="col-4" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="div2-2" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget22"></div></div>
+                <div class="col-4" ondrop="drop(event)" ondragover="allowDrop(event)"><div class="div2-3" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget23"></div></div>
+                <p id="demo"></p>
+            </div>
+    </div>
+    
+    <script>
+            function dragStart(event) {
+                event.dataTransfer.setData("Text", event.target.id);
+            }
+            
+            function dragging(event) {
+                document.getElementById("demo").innerHTML = "The p element is being dragged";
+            }
+            
+            function allowDrop(event) {
+                event.preventDefault();
+            }
+            
+            function drop(event) {
+                event.preventDefault();
+                                
+                var data = event.dataTransfer.getData("Text");
+                if((event.target.id=="dragtarget11"&&data=="dragtarget21")||(event.target.id=="dragtarget12"&&data=="dragtarget22")||(event.target.id=="dragtarget13"&&data=="dragtarget23"))
+                event.target.appendChild(document.getElementById(data));
+                document.getElementById("demo").innerHTML = "The p element was dropped";
+            }
+            </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>
