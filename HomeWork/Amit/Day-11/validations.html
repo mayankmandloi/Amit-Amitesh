@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <style>
+                .error
+                {
+                    display: block;
+                    width: 100%;
+                    padding: .375rem .75rem;
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    color: #574949;
+                    background-color: #fff;
+                    background-image: none;
+                    background-clip: padding-box;
+                    border: 3px solid #dc3545;
+                    border-radius: .25rem;
+                    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                }
+                .sucess
+                {
+                    display: block;
+                        width: 100%;
+                        padding: .375rem .75rem;
+                        font-size: 1rem;
+                        line-height: 1.5;
+                        color: #574949;
+                        background-color: #fff;
+                        background-image: none;
+                        background-clip: padding-box;
+                        border: 3px solid green;
+                        border-radius: .25rem;
+                        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                }
+                </style>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <title>validation</title>
+    
+</head>
+<body>
+    <div class="container">
+
+        <h2 class="text-center">Fill the form</h2>
+            <div class="jumbotron jumbotron-fluid w-75 p-3" style="margin: 0 auto;">
+                    
+                   <div class="form-group">
+                       <form name="form-name">
+                            <label>Name :</label>
+                            <input type="name" class="form-control" id="name" name="fname" onblur="testName(this)">
+                            <p id="errorname"></p>
+                            <label>Email :</label>
+                            <input type="email" class="form-control" id="email" onblur="testEmail(this)">
+                            <p id="erroremail"></p>
+                            <label>username :</label>
+                            <input type="username" class="form-control" id="username">
+                            <label>Password :</label>
+                            <input type="password" class="form-control" id="password">
+                        </form>
+                   </div> 
+            </div>
+      
+    </div> 
+    
+</body>
+
+
+<script>
+
+       
+    
+
+       
+      
+        var myname = /^[A-Za-z]{1,}[A-Za-z0-9 ]{3,20}$/;
+        var myEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+        
+        function testName(element)
+        {
+            
+            if(myname.test(element.value))
+            {
+                element.className="sucess";
+                document.getElementById("errorname").innerHTML = "";
+            }
+            else
+            {
+                
+                element.className="error";
+                document.getElementById("errorname").innerHTML = "Please enter a valid name";
+            }
+        }  
+           
+
+        function testEmail(element)
+        {
+            
+            if(myEmail.test(element.value))
+            {
+                element.className="sucess";
+                document.getElementById("erroremail").innerHTML = "";
+            }
+            else
+            {
+                
+                element.className="error";
+                document.getElementById("erroremail").innerHTML = "Please enter a valid email id";
+            }
+        }  
+    
+
+
+</script>
+</html>

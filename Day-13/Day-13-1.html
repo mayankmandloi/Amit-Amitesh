@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+            .error
+            {
+                display: block;
+                width: 100%;
+                padding: .375rem .75rem;
+                font-size: 1rem;
+                line-height: 1.5;
+                color: #574949;
+                background-color: #fff;
+                background-image: none;
+                background-clip: padding-box;
+                border: 3px solid #dc3545;
+                border-radius: .25rem;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            }
+            .sucess
+            {
+                display: block;
+                    width: 100%;
+                    padding: .375rem .75rem;
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    color: #574949;
+                    background-color: #fff;
+                    background-image: none;
+                    background-clip: padding-box;
+                    border: 3px solid green;
+                    border-radius: .25rem;
+                    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            }
+            </style>
+    <title>Web Bhumi</title>
+</head>
+<body>
+    <form action="get" novalidate>
+        <input type="text" name="name" for-validation-type="name" placeholder="name" onkeypress="testValue(this)">
+
+        <input type="email" name="email" for-validation-type="email" placeholder="email" onkeypress="testValue(this)">
+
+        <input type="number" name="number" for-validation-type="number" placeholder="number" onkeypress="testValue(this)">
+
+        <input type="number" name="age" for-validation-type="age" placeholder="age" onkeypress="testValue(this)">
+    </form>
+
+    <script>
+        function testValue(amit)
+        {
+            var amitType=amit.getAttribute("for-validation-type")
+            console.log(amitType);
+           if(amitType=="text")
+           {
+
+
+           }
+           if(amitType=="email")
+           {
+               var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+
+               if(regex.test(amit.value))
+               {
+                    amit.className="sucess";
+                    amit.title="";
+               }
+               else
+               {
+                    amit.className="error";
+                    amit.title="please check your email";
+               }
+           }
+           if(amitType=="number")
+           {
+               
+           }
+           if(amitType=="age")
+           {
+               
+           }
+           if(!amitType)
+           {
+               
+           }
+
+        }
+    </script>
+</body>
+</html>
