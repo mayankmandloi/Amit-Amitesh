@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <style>
+                .error
+                {
+                    display: block;
+                    width: 100%;
+                    padding: .375rem .75rem;
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    color: #574949;
+                    background-color: #fff;
+                    background-image: none;
+                    background-clip: padding-box;
+                    border: 3px solid #dc3545;
+                    border-radius: .25rem;
+                    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                }
+                .sucess
+                {
+                    display: block;
+                        width: 100%;
+                        padding: .375rem .75rem;
+                        font-size: 1rem;
+                        line-height: 1.5;
+                        color: #574949;
+                        background-color: #fff;
+                        background-image: none;
+                        background-clip: padding-box;
+                        border: 3px solid green;
+                        border-radius: .25rem;
+                        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                }
+                </style>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <title>validation</title>
+    
+</head>
+<body>
+    <div class="container">
+
+        <h2 class="text-center">Validation form</h2>
+            <div class="jumbotron jumbotron-fluid w-75 p-3 m-auto">
+                    
+                   <div class="form-group">
+                      
+                       <form name="form-name" novalidate>
+                           <div id="form1">
+                            <label>Name :</label>
+                            <input type="text" class="form-control" id="name" name="name" for-validation-type="name" onblur="testName(this)">
+                            <p id="errorname"></p>
+                            <label>Email :</label>
+                            <input type="email" class="form-control" id="email" name="email" onblur="testEmail(this)">
+                            <p id="erroremail"></p>
+<div class="text-right m-1"><button type="button" class="btn btn-default" onclick="window.hide1()">Next</button></div>
+                        </div>
+
+                        <div id="form2" style="display:none;">
+                                <label>Username :</label>
+                                <input type="text" class="form-control" id="name1" name="name1" onblur="testusername(this)">
+                                <p id="errorname"></p>
+                                <label>Password :</label>
+                                <input type="password" class="form-control" id="email1" name="email1" onblur="testpasword(this)">
+                                <p id="erroremail"></p>
+                               <div class="text-right m-1"><button class="btn btn-default" onclick="finaldone();">Next</button></div>
+                            </div>
+
+                            
+                        </form>
+
+                       
+                   </div> 
+            </div>
+      
+    </div> 
+    
+</body>
+
+
+<script>
+
+       
+    
+
+       
+      
+        var myname = /^[A-Za-z ]{3,20}$/;
+        var myEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+        var Username = /[a-zA-Z0-9]{2,8}$/;
+        var pasword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+        
+        function testName(element)
+        {
+            
+            if(myname.test(element.value))
+            {
+                element.className="sucess";
+                document.getElementById("errorname").innerHTML = "";
+                return true;
+            }
+            else
+            {
+                
+                element.className="error";
+                document.getElementById("errorname").innerHTML = "Please enter a valid name";
+                return false;
+            }
+        }  
+           
+
+        function testEmail(element)
+        {
+            
+            if(myEmail.test(element.value))
+            {
+                element.className="sucess";
+                document.getElementById("erroremail").innerHTML = "";
+                return true;
+            }
+            else
+            {
+                
+                element.className="error";
+                document.getElementById("erroremail").innerHTML = "Please enter a valid email id";
+                return false ;
+            }
+        }  
+
+        function testusername(element)
+        {
+            
+            if(Username.test(element.value))
+            {
+                element.className="sucess";
+                document.getElementById("erroremail").innerHTML = "";
+                return true;
+            }
+            else
+            {
+                
+                element.className="error";
+                document.getElementById("erroremail").innerHTML = "Please enter a valid email id";
+                return false;
+            }
+        }  
+
+
+        function testpasword(element)
+        {
+            
+            if(pasword.test(element.value))
+            {
+                element.className="sucess";
+                document.getElementById("erroremail").innerHTML = "";
+                return true;
+            }
+            else
+            {
+                
+                element.className="error";
+                document.getElementById("erroremail").innerHTML = "Please enter a valid email id";
+                return false ;
+            }
+        }  
+
+
+
+        function hide1(element){
+            var allEles=document.forms[0].querySelectorAll("input");
+            var isSubmittable=true;
+            var allName=[];
+            var allEmails=[]
+            var allPass=[];
+            for(eles in allEles)
+            {
+            if(allEles[eles].type=="text")
+            {
+                allName.push(allEles[eles]);
+                isSubmittable=isSubmittable&&testName(allEles[eles]);
+            }
+            if(allEles[eles].type=="email")
+            {
+                allEmails.push(allEles[eles]);
+                isSubmittable=isSubmittable&&testEmail(allEles[eles]);
+            }
+            if(allEles[eles].type=="password")
+            {
+                allPass.push(allEles[eles]);
+                isSubmittable=isSubmittable&&testpasword(allEles[eles]);
+            }
+            }
+            console.log(isSubmittable);
+            if(isSubmittable)
+            {
+            document.getElementById("form1").style.display="none";
+            document.getElementById("form2").style.display="block";
+            }
+            return isSubmittable;
+           
+        }
+
+
+        function finaldone(element){
+
+           alert(hello);
+           
+        }
+
+     
+
+</script>
+</html>
