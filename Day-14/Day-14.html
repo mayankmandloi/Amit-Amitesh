@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Bhumi</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+    
+    function person(name,number)
+    {
+        this.name=name;
+        this.number=number;
+
+    }
+    function newPerson(address,pin,height)
+    {
+        this.address=address?address:"N/A";
+        this.pin=pin?pin:"N/A";
+        this.height=156;
+    }
+
+
+    var p1 = new person("Mayank",9425319399);
+    var p2 = new newPerson("Test",2345678,566);
+    p1.__proto__.age=13;
+    // p1.__proto__=newPerson;
+    // p2.__proto__.weight=15;
+    console.log(p1);
+
+    console.log(p2);
+    p1.__proto__=p2.__proto__;
+    console.log(p1.height);
+    // console.log(p1.weight);
+    
+     var p3=new person("Amit",23456788);
+     console.log(p3);
+     console.log(p3.age);
+     //var p4=new Object();
+     p4=Object.assign({},p2);
+    console.log(p4);
+    p4.address="test3";
+    console.log(p4);
+    console.log(p2);
+
+
+
+    var obj = { a: 1 };
+var copy = Object.assign({}, obj);
+console.log(copy); // { a: 1 }
+
+    </script>
+</body>
+</html>

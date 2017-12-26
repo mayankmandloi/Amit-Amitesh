@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Create a copy of object</h1>
+    <script>
+    function person(name,number)
+    {
+        this.name=name;
+        this.number=number;
+
+    }
+    function newPerson(address,pin,height)
+    {
+        this.address=address;
+        this.pin=pin;
+        this.height=height;
+    }
+
+
+    var p1 = new person("Mayank",9425319399);
+    var p2 = Object.assign({},p1);
+
+   
+
+    console.log(p1);
+    console.log(p2);
+
+
+    p2.name="Mayank Mandloi";
+
+
+
+    console.log(p1);
+    console.log(p2);
+    </script>
+</body>
+</html>
