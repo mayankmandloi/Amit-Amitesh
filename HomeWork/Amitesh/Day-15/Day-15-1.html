@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example of Ajax</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <style>
+    #searchkey{
+        padding: 5px 10px;
+        text-align: 12px;
+        width: 350px;
+    }
+    .maincontainer{
+        margin-top: 30px;
+    }
+    button{
+        padding: 5px;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="text-center container">
+        <div class="row">
+            <div class="col-2"> </div>
+            <div class="col-8 maincontainer">
+                <input type="text" name="searchtext" id="searchkey" placeholder="Enter Search Key php,java,javaScript,html,css" required >
+                <button type="button" onclick="loadData()">Change Content</button>
+                <hr>
+                <ul id="demo" class="text-left"></ul>
+            </div>
+            <div class="col-2"> </div>
+        </div>
+    </div>
+
+    <script>
+    function showBooks(Books){
+        var ele =document.getElementById("demo");
+        ele.innerHTML="";
+        console.log(Books);
+
+        for(index in Books)
+        {
+        console.log(index);
+        ele.innerHTML+="<li>"+Books[index].Title+"</li>";
+        
+        }
+    }
+    function loadData()
+    {
+        var reqdata = new XMLHttpRequest();
+        var serchturm = document.getElementById("searchkey").value;
+        var ele =document.getElementById("demo");
+        ele.innerHTML="Loading...";
+        reqdata.onreadystatechange = function(){
+
+            if (this.readyState == 4 && this.status == 200) {
+               var Books=JSON.parse(this.responseText).Books;
+               showBooks(Books);
+               }
+        };
+        reqdata.open("GET", "http://it-ebooks-api.info/v1/search/"+serchturm, true);
+        reqdata.send();
+    }
+    </script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</body>
+</html>

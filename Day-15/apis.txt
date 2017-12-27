@@ -1,0 +1,6 @@
+layout ref :- https://randomuser.me/
+api https://randomuser.me/api
+
+
+google address :- 
+https://maps.googleapis.com/maps/api/geocode/json?address=search text
