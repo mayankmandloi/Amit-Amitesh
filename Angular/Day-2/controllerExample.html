@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div ng-app="myModule">
+        <div ng-controller="amitController">
+
+            <p>age={{age}}</p>
+            <p>name={{name}}</p>
+            <p>height={{height}}</p>
+        </div>
+
+        <div ng-controller="amiteshController">
+            
+            <p>age={{age}}</p>
+            <p>name={{name}}</p>
+            <p>height={{height}}</p>
+            
+        </div>
+<hr>
+<div ng-controller="amitController">
+
+        <p>age={{age}}</p>
+        <p>name={{name}}</p>
+        <p>height={{height}}</p>
+        <hr><hr>
+    <div ng-controller="amiteshController">
+        
+        <p>age={{age}}</p>
+        <p>name={{name}}</p>
+        <p>height={{height}}</p>
+        
+    </div>
+    <hr><hr><hr>
+    <p>age={{age}}</p>
+    <p>name={{name}}</p>
+    <p>height={{height}}</p>
+
+</div>
+
+
+    </div>
+
+
+    <script src="../js/angular.min.js"></script>
+
+    <script>
+    var app = angular.module("myModule",[]);
+    app.controller("amitController",function($scope){
+        $scope.age = 25;
+        $scope.name="Amit";
+        $scope.height=5.8;
+    });
+
+    app.controller("amiteshController",function($scope){
+        $scope.age = 26;
+        $scope.name="Amitesh";
+    });
+    </script>
+</body>
+</html>

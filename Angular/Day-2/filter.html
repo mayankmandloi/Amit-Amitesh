@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div ng-app="myModule">
+        <div ng-controller="amitController as amit">
+
+            <p>age={{amit.age}}</p>
+            <p>name={{amit.name|uppercase}}</p>
+            <p>name={{amit.name}}</p>
+            <p>height={{amit.height}}</p>
+        </div>
+
+       
+
+    </div>
+
+
+    <script src="../js/angular.min.js"></script>
+
+    <script>
+    var app = angular.module("myModule",[]);
+    app.controller("amitController",function(){
+        this.age = 25;
+        this.name="Amit";
+        this.height=5.8;
+    });
+
+    app.controller("amiteshController",function(){
+        this.age = 26;
+        this.name="Amitesh";
+    });
+    </script>
+</body>
+</html>
