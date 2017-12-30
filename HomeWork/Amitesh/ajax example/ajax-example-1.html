@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Ajax User API Program </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+<header class="bg-dark text-center">
+</header>
+<div class="container text-center">
+  <div class="frame card_offset">
+        <div class="card">
+            <div class="details" id="details">
+            </div>
+            <ul class="values_list horizontal_center" id="values_list">
+                <li data-title="Hi, My name is" data-value="christopher james" data-label="name" class="active" onmouseover="hoverUl1(this)" ></li>
+                <li data-title="My email address is" data-value="christopher.james44@example.com" data-label="email" data-caps="false" class="" onmouseover="hoverUl1(this)"></li>
+                <li data-title="My birthday is" data-value="1/3/1984" data-label="birthday" class="" onmouseover="hoverUl1(this)" ></li>
+                <li data-title="My address is" data-value="2743 ash dr" data-label="location" class="" onmouseover="hoverUl1(this)" ></li>
+                <li data-title="My phone number is" data-value="(957)-429-7956" data-label="phone" class="" onmouseover="hoverUl1(this)" ></li>
+                <li data-title="My password is" data-value="sword" data-label="pass" data-caps="false" class="" onmouseover="hoverUl1(this)" ></li>
+            </ul>
+        </div>
+  </div>
+  <button type="button" class="btn mt-5 btn-success" id="data_btn" onclick="getUserInfo()" value="Get Data">Get Data</button>
+</div>
+<footer class="text-center">       
+</footer>
+
+    
+    <script>
+        var gUser;
+        function showUserInfo(user){
+            document.getElementById("details").innerHTML = "";
+            var i = 0;
+            gUser=user;
+            console.log(user);
+
+            var u_imgediv = document.createElement("div");
+            u_imgediv.setAttribute('class','user_photo horizontal_center');
+            u_imgediv.setAttribute('id','user_photo');
+            document.getElementById("details").appendChild(u_imgediv);
+                        
+            var u_photo = document.createElement("img");
+            u_photo.setAttribute('src', user[i].picture.large);
+            document.getElementById("user_photo").appendChild(u_photo);
+
+            var u_name = document.createElement("p");
+            u_name.setAttribute('id','user_title');
+            u_name.innerText = "Hi, My name is";
+            document.getElementById('details').appendChild(u_name);
+
+            var u_value = document.createElement("p");
+            u_value.setAttribute('id','user_value');
+            u_value.style.textTransform = "uppercase";
+            u_value.innerHTML = user[i].name.title +" "+ user[i].name.first +" "+ user[i].name.last;
+            document.getElementById('details').appendChild(u_value);
+
+            
+        
+    }
+    function hoverUl1(ele){
+        var other_list = document.querySelectorAll("#values_list > li");
+        //console.log(other_list);
+        for(index in other_list)
+        {
+            other_list[index].className="";
+        }
+        ele.className="active";
+               }
+        // function hoverUl(){
+            
+        //     //var other_list = document.querySelectorAll("ul > li");
+        //    // other_list.remove("mystyle");
+        //     var valuelist = document.querySelectorAll("li");
+        //     console.log(valuelist);
+        //     //valuelist.className += "active";
+        // }
+
+        function getUserInfo(){
+            document.getElementById("details").innerHTML = "Loading.....";
+            document.getElementById("data_btn").innerText = "Refresh";
+            var xhtml = new XMLHttpRequest();
+            xhtml.onreadystatechange =  function(){
+                 
+                if(this.readyState == 4 && this.status == 200)
+                    {
+                        var user = JSON.parse(this.responseText).results;
+                        showUserInfo(user);
+                    }                    
+                };
+                xhtml.open("GET","https://randomuser.me/api",true);
+                xhtml.send();
+            }
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+</body>
+</html>
