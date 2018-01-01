@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule">
+<div ng-controller="myController">
+    <span ng-click="showHide()">{{"Amitesh"|amit:"#":sh}}</span>
+</div>
+    <script src="../js/angular.min.js"></script>
+
+    <script>
+    angular.module("myModule",[]);
+
+    angular.module("myModule").filter("amit",function(){
+
+        return function(item,sym,t)
+        {
+            console.log(t);
+            var length = item.length;
+            var newString="";
+            if(sym.length==1&& t ){
+            for(var i=0;i<length;i++)
+            {
+                newString +=sym;
+            }
+            return newString
+            }
+            else
+            return item;
+        }
+    }).controller("myController",function($scope){
+
+        $scope.showHide=function()
+        {
+            if($scope.sh)
+            {
+                $scope.sh=false;
+            }
+            else
+            {
+                $scope.sh=true;
+            }
+        }
+    })
+    </script>
+</body>
+</html>
