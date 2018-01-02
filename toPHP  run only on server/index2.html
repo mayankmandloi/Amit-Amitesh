@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div ng-app="myModule">
+        <div ng-controller="myBooksController">
+            <input type="text" name="" id="" ng-model="user.username">
+            <input type="password" name="" id="" ng-model="user.password">
+            <button ng-click="sendToDb()"> Submit</button>
+        </div>
+    </div>
+
+
+    <script src="js/angular.min.js"></script>
+
+    <script>
+    var app= angular.module("myModule",[]);
+
+    app.controller("myBooksController",function($scope,$http){
+          $scope.sendToDb = function ()
+          {
+              $http.post("amitesh.php",$scope.user).then(function(resData)
+              {
+                  console.log(resData.data);
+                  if(resData.data==1)
+                  {
+                      window.alert("submitted");
+                  }
+                },function(resData){console.log(resData.data)})
+          }
+    })
+    </script>
+</body>
+</html>

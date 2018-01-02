@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Ajax User API Program </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+<header class="bg-dark text-center">
+</header>
+<div class="container text-center">
+  <div class="frame card_offset">
+        <div class="card" id="card">
+            <!-- <div class="details" id="details">
+            </div> -->
+            <!-- <ul class="values_list horizontal_center" id="values_list">
+                <li data-label="name" class="active" onmouseover="hoverUl(this)" ></li>
+                <li data-label="email" data-caps="false" onmouseover="hoverUl(this)"></li>
+                <li data-label="birthday" onmouseover="hoverUl(this)" ></li>
+                <li data-label="location" data-caps="false" onmouseover="hoverUl(this)" ></li>
+                <li data-label="phone" onmouseover="hoverUl(this)" ></li>
+                <li data-label="pass" data-caps="false" onmouseover="hoverUl(this)" ></li>
+            </ul> -->
+        </div>
+  </div>
+  <button type="button" class="btn mt-5 btn-success" id="data_btn" onclick="getUserInfo()" value="Get Data">Get Data</button>
+</div>
+<footer class="text-center">       
+</footer>
+
+    
+    <script>
+        var gUser;
+        function showUserInfo(user){
+            document.getElementById("details").innerHTML = "";
+            var i = 0;
+            gUser=user;
+            console.log(user);
+            var u_imgediv = document.createElement("div");
+            u_imgediv.setAttribute('class','user_photo horizontal_center');
+            u_imgediv.setAttribute('id','user_photo');
+            document.getElementById("details").appendChild(u_imgediv);
+                        
+            var u_photo = document.createElement("img");
+            u_photo.setAttribute('src', user[i].picture.large);
+            document.getElementById("user_photo").appendChild(u_photo);
+
+            var u_name = document.createElement("p");
+            u_name.setAttribute('id','user_title');
+            u_name.innerText = "Hi, My name is";
+            document.getElementById('details').appendChild(u_name);
+            
+            var u_value = document.createElement("p");
+            u_value.setAttribute('id','user_value');
+            u_value.style.textTransform = "uppercase";
+            u_value.innerHTML = user[i].name.title +" "+ user[i].name.first +" "+ user[i].name.last;
+            document.getElementById('details').appendChild(u_value);
+        }
+        function showListInfo(user){
+            document.getElementById("values_list").innerHTML = "";            
+
+            var listall = ['name','email','birthday','location','phone','pass'];
+            for(a=0;a<listall.length;a++){
+
+                var list_li = "list_li"+listall[a];
+                console.log(list_li);
+
+                list_li = document.createElement("li");                
+                if(listall[a] == "name"){
+                  list_li.setAttribute('class','active');
+                }
+                list_li.setAttribute('data-label',listall[a]);
+                list_li.setAttribute('onmouseover','hoverUl(this)');
+                document.getElementById("values_list").appendChild(list_li);
+
+            }
+        }
+    
+        function hoverUl(ele){
+            var i = 0;
+            var other_list = document.querySelectorAll("#values_list > li");
+                for(index in other_list)
+                {
+                    other_list[index].className="";
+                }
+                ele.className="active";
+                var infolabel = ele.getAttribute('data-label');
+
+                if(infolabel == "name"){
+                    var u_name1 = gUser[i].name.title +" "+ gUser[i].name.first +" "+ gUser[i].name.last;
+                    ele.setAttribute("data-value",u_name1);
+                    ele.setAttribute("data-title","Hi, My name is");
+                    document.getElementById("user_title").innerText = ele.getAttribute("data-title");
+                    document.getElementById("user_value").innerText = ele.getAttribute("data-value");
+                }
+                if(infolabel == "email"){
+                    var u_email1 = gUser[i].email;
+                    ele.setAttribute("data-value",u_email1);
+                    ele.setAttribute("data-title","My email address is");
+                    document.getElementById("user_title").innerText = ele.getAttribute("data-title");
+                    document.getElementById("user_value").innerText = ele.getAttribute("data-value");
+                }
+                if(infolabel == "birthday"){
+                    var u_birthday = gUser[i].dob;
+                    ele.setAttribute("data-value",u_birthday);
+                    ele.setAttribute("data-title","My birthday is");
+                    document.getElementById("user_title").innerText = ele.getAttribute("data-title");
+                    document.getElementById("user_value").innerText = ele.getAttribute("data-value");
+                }
+                if(infolabel == "location"){
+                    var u_location = gUser[i].location.street+" "+gUser[i].location.city;
+                    ele.setAttribute("data-value",u_location);
+                    ele.setAttribute("data-title","My address is");
+                    document.getElementById("user_title").innerText = ele.getAttribute("data-title");
+                    document.getElementById("user_value").innerText = ele.getAttribute("data-value");
+                }
+                if(infolabel == "phone"){
+                    var u_phone = gUser[i].phone;
+                    ele.setAttribute("data-value",u_phone);
+                    ele.setAttribute("data-title","My phone number is");
+                    document.getElementById("user_title").innerText = ele.getAttribute("data-title");
+                    document.getElementById("user_value").innerText = ele.getAttribute("data-value");
+                }
+                if(infolabel == "pass"){
+                    var u_password = gUser[i].login.password;
+                    ele.setAttribute("data-value",u_password);
+                    ele.setAttribute("data-title","My password is");
+                    document.getElementById("user_title").innerText = ele.getAttribute("data-title");
+                    document.getElementById("user_value").innerText = ele.getAttribute("data-value");
+                }
+        }
+       
+        function getUserInfo(){
+            var details_div = document.createElement("div");
+            details_div.setAttribute('class','details');
+            details_div.setAttribute('id','details');
+            document.getElementById("card").appendChild(details_div);
+
+            var list_ul = document.createElement("ul");
+            list_ul.setAttribute('class','values_list horizontal_center');
+            list_ul.setAttribute('id','values_list');
+            document.getElementById("card").appendChild(list_ul);
+            
+            document.getElementById("card").style.minHeight = "404px";
+            document.getElementById("details").innerHTML = "Loading.....";
+            document.getElementById("data_btn").innerText = "Refresh";
+            var xhtml = new XMLHttpRequest();
+            xhtml.onreadystatechange =  function(){
+                 
+            if(this.readyState == 4 && this.status == 200)
+                {
+                    var user = JSON.parse(this.responseText).results;
+                    showUserInfo(user);
+                    showListInfo(user);
+                }                    
+            };
+            xhtml.open("GET","https://randomuser.me/api",true);
+            xhtml.send();
+            }
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+</body>
+</html>

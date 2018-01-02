@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular Js</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    
+</head>
+<body>
+<div ng-app="myModule" class="container">
+    <div ng-controller="myController" class="row">
+        <div ng-repeat="kitab in Kitabe" class="col-4">
+            <img ng-src=" {{kitab.Image}} ">
+            <h3 ng-bind="kitab.Title"></h3>
+            <p ng-bind="kitab.Description"></p>
+        </div>
+
+    </div>
+</div>
+
+
+
+    <script src="../../js/angular.min.js"></script>
+    <script>
+    var myapp = angular.module("myModule",[]);
+    myapp.controller("myController",function($scope,$http){
+
+        $http.get("http://it-ebooks-api.info/v1/search/php%20mysql").then(function success(responseData){
+            $scope.Kitabe=responseData.data.Books
+        }, function failuer(responseData){
+            console.log(responseData);
+            console.log("----------------------");
+        })
+    })
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>
