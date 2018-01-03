@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .done
+    {
+        text-decoration: line-through;
+        color: grey;
+    }
+    </style>
+</head>
+<body>
+    <div ng-app="todoApp">
+
+        <div ng-controller="todoController as toc">
+            <input type="text" name="" id="" ng-model="toc.newTask">
+            <button type="button" ng-click="toc.addTask()">Add Task</button>
+            <div ng-repeat="task in toc.taskList|filter:toc.newTask">            
+            <h3 ng-class="{done:task.done}" ng-hide="task.editable"><input type="checkbox" name="" id="" ng-model="task.done"> {{task.text}} <button type="button" ng-click=toc.toggleEdit(task)>Edit</button></h3>
+            <input type="text" name="" id="" ng-show="task.editable" ng-model="task.text">
+            <button type="button" ng-show="task.editable" ng-click=toc.toggleEdit(task)>Save</button>
+
+        </div>
+        </div>
+
+
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/todoApp.js"></script>
+</body>
+</html>
