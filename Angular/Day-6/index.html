@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule">
+
+    <ul>
+        <li> <a href="#!/">Home</a> </li>
+        <li> <a href="#!/task">Task</a> </li>
+        <li> <a href="#!/amitesh">Amitesh</a> </li>
+        <li> <a href="#!/amit">Amit</a> </li>
+        <li> <a href="#!/shivam">Shivam</a> </li>
+    </ul>
+    <ng-view></ng-view>
+    
+
+    <script src="../js/angular.js"></script>
+    <script src="../js/angular-route.js"></script>
+    <script>
+    var app = angular.module("myModule",["ngRoute"]);
+    app.config(function($routeProvider){
+            $routeProvider.when("/",{
+                template:"<h1>Home</h1>"
+            });
+            $routeProvider.when("/task",{
+                template:"<h1>Task</h1>"
+            });
+            $routeProvider.when("/amitesh",{
+                template:"<h1>Amitesh</h1>"
+            });
+            $routeProvider.when("/amit",{
+                template:"<h1>Amit</h1>"
+            });
+            $routeProvider.when("/shivam",{
+                template:"<h1>Shivam</h1>"
+            });
+    });
+    app.controller("myController",function(){
+
+    })
+    </script>
+</body>
+</html>

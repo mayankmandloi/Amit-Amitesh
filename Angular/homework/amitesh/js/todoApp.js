@@ -3,12 +3,6 @@ angular.module("todoApp",[]).controller("todoController",function(){
 
     self.sortBy=function(t)
     {
-        // if(self.sortByMe==t)
-        // {
-        //     self.sortByMe="-"+t; 
-        // }
-        // else
-        // self.sortByMe=t;
         self.canI =!self.canI;
         console.log(self.canI)
     };
@@ -54,7 +48,7 @@ angular.module("todoApp").filter("ff",function(){
         {
         incTask=incTask.sort(function(a,b)
         {
-            console.log(a.text.localeCompare(b.text));
+            //console.log(a.text.localeCompare(b.text));
             return a.text.localeCompare(b.text);
         });
     }
