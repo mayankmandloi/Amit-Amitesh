@@ -1,0 +1,20 @@
+<h1>Edit task</h1>
+<table ng-show="{{Trips.length}}">
+    <thead>
+    <tr>
+        <th>S.No</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+        <th>Done</th>
+    </tr>
+</thead>
+<tbody>
+    <tr ng-repeat="trip in Trips|filter:tt">
+        <td> <input type="text"ng-model="trip.from"> </td>
+        <td><input type="text"ng-model="trip.to"></td>
+        <td><input type="date"ng-model="trip.date"></td>
+        <td> <a href="#!/"> <button>Save</button></a></td>
+    </tr>
+</tbody>
+</table>

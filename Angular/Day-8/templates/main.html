@@ -1,0 +1,22 @@
+<a href="#!/addtask"> <button>Add Trip</button></a>
+
+<table ng-show="{{Trips.length}}">
+    <thead>
+    <tr>
+        <th>S.No</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+        <th>Done</th>
+    </tr>
+</thead>
+<tbody>
+    <tr ng-repeat="trip in Trips">
+        <td><a href="#!/edittask/{{trip.id}}">{{$index+1}}</a></td>
+        <td><a href="#!/edittask/{{trip.id}}">{{trip.from}}</a></td>
+        <td><a href="#!/edittask/{{trip.id}}">{{trip.to}}</a></td>
+        <td><a href="#!/edittask/{{trip.id}}">{{trip.date|date}}</a></td>
+        <td><button ng-click="tripDone(trip)">Done</button></td>
+    </tr>
+</tbody>
+</table>
