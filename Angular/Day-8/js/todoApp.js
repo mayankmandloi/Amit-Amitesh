@@ -3,9 +3,20 @@ angular.module("TripPlanner").config(function($routeProvider){
 
     $routeProvider.when("/",{
         templateUrl:"templates/main.html",
-        controller:function($scope,tripmanager)
+        controller:function($scope,tripmanager,$route)
         {
             $scope.Trips=tripmanager.Trips;
+            $scope.DoneTrips=tripmanager.DoneTrips;
+            $scope.tripDone = function(trip)
+            {
+                trip.done=false;
+                $scope.DoneTrips.push(trip);
+                var i=$scope.Trips.indexOf(trip);
+                $scope.Trips.splice(i,1);
+                $scope.Trips=tripmanager.Trips;
+                $scope.DoneTrips=tripmanager.DoneTrips;
+                $route.reload();
+            }
         }
     })
     $routeProvider.when("/addtask",{
@@ -14,7 +25,7 @@ angular.module("TripPlanner").config(function($routeProvider){
         {
             $scope.saveTrip=function()
             {
-                var trip = [];
+             
                 $scope.trip.id=tripmanager.obj.id++;
                 // trip.from=$scope.from;
                 // trip.to=$scope.to;
@@ -35,9 +46,10 @@ angular.module("TripPlanner").config(function($routeProvider){
 angular.module("TripPlanner").service("tripmanager",function(){
     this.Trips=[];
     this.obj=[];
-    this.obj.id=4;
+    this.obj.id=1;
+    this.DoneTrips=[];
 
-    this.Trips =[{id:1,from:"Indore",to:"Gwalior",date:new Date(),done:false},{id:2,from:"Indore",to:"Bh0pal",date:new Date(),done:false},{id:3,from:"Indore",to:"Khandwa",date:new Date(),done:false}];
+    this.Trips =[{id:1,from:"Indore",to:"Gwalior",date:new Date(),done:false},{id:2,from:"Indore",to:"Bhopal",date:new Date(),done:false},{id:3,from:"Indore",to:"Khandwa",date:new Date(),done:false}];
 });
 angular.module("TripPlanner").controller("editTrip",function($scope,$routeParams,tripmanager){
     $scope.tt=[];

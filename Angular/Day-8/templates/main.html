@@ -1,6 +1,7 @@
 <a href="#!/addtask"> <button>Add Trip</button></a>
 
-<table ng-show="{{Trips.length}}">
+{{Trips.length!=0}}
+<table ng-show="{{Trips.length!=0}}">
     <thead>
     <tr>
         <th>S.No</th>
@@ -20,3 +21,27 @@
     </tr>
 </tbody>
 </table>
+
+<hr><hr><hr>
+
+
+<table ng-show="{{DoneTrips.length!=0}}">
+    <thead>
+    <tr>
+        <th>S.No</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+  
+    </tr>
+</thead>
+<tbody>
+    <tr ng-repeat="trip in DoneTrips">
+        <td style="text-decoration: transparent">{{$index+1}}</td>
+        <td style="text-decoration: transparent">{{trip.from}}</td>
+        <td style="text-decoration: transparent">{{trip.to}}</td>
+        <td style="text-decoration: transparent">{{trip.date|date}}</td>
+    </tr>
+</tbody>
+</table>
+
