@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div ng-app="thisApp">
+
+        <div ng-controller="myController">
+            <div>
+                <h1 ng-repeat=" book in Books">
+                    {{book.Title}}
+                </h1>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../js/angular.min.js"></script>
+
+    <script>
+    var app=angular.module("thisApp",[]);
+        app.controller("myController",function($scope,$http){
+
+            function success(res)
+            {
+                console.log(res.data.Books);
+                $scope.Books=res.data.Books;
+                console.log(":)");   
+
+            }
+            function failuer(responceData)
+            {
+                console.log(responceData);
+                console.log(":(");   
+
+            }
+
+
+
+            $http.get("http://it-ebooks-api.info/v1/search/angular").then(success,failuer);
+
+
+        })
+
+    </script>
+</body>
+</html>

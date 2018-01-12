@@ -7,6 +7,7 @@ angular.module("TripPlanner").config(function($routeProvider){
         {
             $scope.Trips=tripmanager.Trips;
             $scope.DoneTrips=tripmanager.DoneTrips;
+            
             $scope.tripDone = function(trip)
             {
                 trip.done=false;
@@ -15,7 +16,7 @@ angular.module("TripPlanner").config(function($routeProvider){
                 $scope.Trips.splice(i,1);
                 $scope.Trips=tripmanager.Trips;
                 $scope.DoneTrips=tripmanager.DoneTrips;
-                $route.reload();
+                //$route.reload();
             }
         }
     })

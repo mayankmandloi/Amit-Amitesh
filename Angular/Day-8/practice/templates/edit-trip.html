@@ -1,0 +1,22 @@
+<div class="">
+<h2><a href="#!/"><button type="button" class="btn btn-outline-primary">Back</button></a> Update Trip</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="trip in Trips|filter:tt">
+            <td><input type="text" class="form-control" name="from" placeholder="From" ng-model="trip.from"></td>
+            <td><input type="text" class="form-control" name="to" placeholder="To" ng-model="trip.to"></td>
+            <td><input type="date" class="form-control" name="date"  placeholder="Date" ng-model="trip.date"></td>
+            <td><a href="#!/"><button class="btn btn-info" name="savetrip" >Save Trip</button></a></td>
+        </tr>
+    </tbody>
+
+</table>
+</div>

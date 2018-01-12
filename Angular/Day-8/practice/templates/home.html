@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-9"><h2>List of Future Trips</h2></div>
+    <div class="col-3 text-right pt-2 pb-2"><a href="#!/addTrip" class=""><button type="button" class="btn btn-secondary">Add Trip</button></a></div>
+</div>
+<table class="table table-bordered table-hover" ng-show="{{Trips.length!=0}}">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Date</th>
+      <th class="text-right">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="trip in Trips">
+      <th scope="row">{{$index+1}}</th>
+      <td ng-bind="trip.from"></td>
+      <td ng-bind="trip.to"></td>
+      <td ng-bind="trip.date|date"></td>
+      <td class="text-right">
+          <a href="#!/editTrip/{{trip.id}}"><button class="btn btn-info" name="edit">Edit</button></a>
+          <button class="btn btn-success ml-3" name="done" ng-click="tripDone(trip)">Done</button>
+      </td>
+    </tr>          
+  </tbody>
+</table>
+
+<hr>
+
+<table class="table table-bordered table-hover" ng-show="{{DoneTrips.length!=0}}">
+  <thead>
+    <tr>
+      <th colspan="4" class="text-center">All Done Trips</th>
+    </tr>
+    <tr>
+      <th>#</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Date</th>      
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="done" ng-repeat="trip in DoneTrips">
+      <td>{{$index+1}}</td>
+      <td>{{trip.from}}</td>
+      <td>{{trip.to}}</td>
+      <td>{{trip.date|date}}</td>
+  </tr>
+  </tbody>
+</table>
