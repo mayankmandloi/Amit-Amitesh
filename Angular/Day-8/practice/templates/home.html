@@ -37,7 +37,9 @@
       <th>#</th>
       <th>From</th>
       <th>To</th>
-      <th>Date</th>      
+      <th>Date</th>
+      <th>Delete</th> 
+      <th>select</th>    
   </tr>
   </thead>
   <tbody>
@@ -46,6 +48,9 @@
       <td>{{trip.from}}</td>
       <td>{{trip.to}}</td>
       <td>{{trip.date|date}}</td>
+      <td><button ng-click="deleteTrip(trip)">Delete</button></td>
+      <td><input type="checkbox" ng-model="trip.ischecked"></td>
   </tr>
   </tbody>
 </table>
+<button ng-click="deleteAll()">Delete Selected</button>

@@ -18,6 +18,25 @@ app.config(function($routeProvider)
             $scope.DoneTrips=tripmanager.DoneTrips;
             $route.reload();
         }
+        $scope.deleteTrip=function(trip)
+        {
+            var index= $scope.DoneTrips.indexOf(trip);
+            $scope.DoneTrips.splice(index,1);
+        }
+
+        $scope.deleteAll = function()
+        {
+            var newArr=[];
+            for(i=0;i<$scope.DoneTrips.length;i++)
+            {
+                
+                if(!($scope.DoneTrips[i].ischecked))
+                {
+                    newArr.push($scope.DoneTrips[i]);
+                }
+            }
+            $scope.DoneTrips=newArr;
+        }
       }
     })
     $routeProvider.when("/addTrip",{
@@ -44,7 +63,7 @@ app.service("tripmanager",function(){
     this.obj.id = 0;
     this.DoneTrips=[];
 
-    //this.Trips =[{id:1,from:"Indore",to:"Sagar",date:new Date(),done:false}];
+    this.DoneTrips =[{id:1,from:"Indore",to:"Sagar",date:new Date(),done:false},{id:1,from:"Indore",to:"Mars",date:new Date(),done:false},{id:1,from:"Indore",to:"Moon",date:new Date(),done:false},{id:1,from:"Indore",to:"Bhopal",date:new Date(),done:false}];
 });
 app.controller("editTrip",function($scope,tripmanager,$routeParams){
     $scope.tt = [];
