@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule">
+  <person-name name="Mayank">:-Bye Bye</person-name>
+  <person-name name="Amit">:-Tata Tata</person-name>
+  <person-name name="Amitesh">:-Take Care</person-name>
+
+    <script src="../js/angular.min.js"></script>
+
+    <script>
+    
+    var app =angular.module("myModule",[]);
+    app.directive("personName",function(){
+        return {
+
+            template:"<h1>Hello I am {{name}} from Web Bhumi <ng-transclude></ng-transclude></h1><input ng-model=\"name\">",
+            transclude:true,
+            scope:{
+                name:"@"//for string
+                //name:"=naam" for model with 2way
+                //name:"^naam" for model with 1way 
+                //name:"&naam" for function
+            }
+        }
+    });
+
+    </script>
+
+</body>
+</html>

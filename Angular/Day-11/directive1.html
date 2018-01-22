@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule">
+    
+   1) <haha></haha>
+   2) <div haha=""></div>
+   3) <div class="haha"></div>
+   4) <!-- directive:haha -->
+
+    <script src="../js/angular.min.js"></script>
+    <script>
+    var app= angular.module("myModule",[])
+    app.directive("haha",function(){
+
+        return {
+        template:"<h1>Hahaha</h1>",
+        restrict:"EACM",//  
+    // E - Element name (default): <my-directive></my-directive>
+    // A - Attribute (default): <div my-directive="exp"></div>
+    // C - Class: <div class="my-directive: exp;"></div>
+    // M - Comment: <!-- directive: my-directive exp -->
+
+
+        replace:true
+        }
+    })
+    </script>
+</body>
+</html>

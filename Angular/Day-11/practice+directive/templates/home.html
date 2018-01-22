@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-9"><h2>List of Future Trips</h2></div>
+    <div class="col-3 text-right pt-2 pb-2"><a href="#!/addTrip" class=""><button type="button" class="btn btn-secondary">Add Trip</button></a></div>
+</div>
+<table class="table table-bordered table-hover" ng-show="{{Trips.length!=0}}">
+  <thead>
+    <tr>
+      <th colspan="5" class="text-left">Feature Trips  <input type="text" class="form-control col-4 float-right" placeholder="Search Key Here" name="searchkey" ng-model="searchKey">
+      </th>
+    </tr>
+    <tr>
+      <th>#</th>
+      <th ng-click="sortByMe('from')">From</th>
+      <th ng-click="sortByMe('to')">To</th>
+      <th ng-click="sortByMe('date')">Date</th>
+      <th class="text-right">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="trip in Trips | filter : searchKey | orderBy:me">
+      <th scope="row">{{$index+1}}</th>
+      <td ng-bind="trip.from"></td>
+      <td ng-bind="trip.to"></td>
+      <td ng-bind="trip.date|date"></td>
+      <td class="text-right">
+          <a href="#!/editTrip/{{trip.id}}"><button class="btn btn-info" name="edit">Edit</button></a>
+          <button class="btn btn-success ml-3" name="done" ng-click="tripDone(trip)">Done</button>
+      </td>
+    </tr>          
+  </tbody>
+</table>
+
+<hr>
+
+<table class="table table-bordered table-hover" ng-show="{{DoneTrips.length!=0}}">
+  <thead>
+    <tr>
+      <th colspan="6" class="text-left">All Done Trips <input type="text" class="form-control float-right col-4" placeholder="Search Key Here" name="searchkey" ng-model="searchKeyInDoneTrip"></th>
+    </tr>
+    <tr>
+      <th>Select</th>
+      <th>#</th>
+      <th ng-click="sortByMeDone('from')" id="from">From<i ng-class="{fas:true, 'fa-long-arrow-alt-down':mee == '-from','fa-long-arrow-alt-up':mee == 'from' }"></i></th>
+      <th ng-click="sortByMeDone('to')" id="to">To <i ng-class="{fas:true, 'fa-long-arrow-alt-down':mee == '-to','fa-long-arrow-alt-up':mee == 'to' }"></i></th>
+      <th ng-click="sortByMeDone('date')" id="date">Date <i ng-class="{fas:true, 'fa-long-arrow-alt-down':mee == '-date','fa-long-arrow-alt-up':mee == 'date' }"></i></th>
+      <th>Delete</th>          
+  </tr>
+  </thead>
+  <tbody>
+    <done-row class="done" ng-repeat="trip in DoneTrips | filter : searchKeyInDoneTrip | orderBy : mee" trip="trip" number="$index+1"></done-row>      
+  </tbody>
+</table>
+<button class="btn btn-danger ml-3" ng-click="deleteAll()">Delete Selected</button>
