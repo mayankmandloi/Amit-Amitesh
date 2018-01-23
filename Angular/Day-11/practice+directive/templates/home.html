@@ -47,7 +47,7 @@
   </tr>
   </thead>
   <tbody>
-    <done-row class="done" ng-repeat="trip in DoneTrips | filter : searchKeyInDoneTrip | orderBy : mee" trip="trip" number="$index+1"></done-row>      
+    <tr done_Row="" class="done" ng-repeat="trip in DoneTrips | filter : searchKeyInDoneTrip | orderBy : mee" trip="trip" number="$index+1"></tr>      
   </tbody>
 </table>
 <button class="btn btn-danger ml-3" ng-click="deleteAll()">Delete Selected</button>
