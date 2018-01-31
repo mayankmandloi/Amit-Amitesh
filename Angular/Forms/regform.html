@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    label
+    {
+        display: block;
+        margin: 3px;
+        width: 20%;
+        transition-duration: 1s;
+    }
+    </style>
+</head>
+<body ng-controller="myController">
+    <form ng-submit="test()" name="myForm" novalidate>
+        <label>First Name <input type="text" ng-model="user.Fname" name="Fname" required></label>
+        <label ng-hide="myForm.Fname.$error.required">Last Name <input type="text" ng-model="user.Lname" name="Lname" required></label>
+        <label ng-hide="myForm.Lname.$error.required">User Name <input type="text" ng-model="user.Uname" name="Uname" required></label>
+        <label style="width:35%" ng-hide="myForm.Uname.$error.required">Gender 
+            <input type="radio" ng-model="gender" name="gen" value="male" required>Male
+            <input type="radio" ng-model="gender" name="gen" value="female" required>Female
+            <input type="radio" ng-model="gender" name="gen" value="n/a" required>Decline to Ans
+        </label>
+        <label ng-show="gender">Contact No <input type="text" ng-model="user.number" ng-pattern="/^[0-9]{10}$/" name="contact" required></label>
+        <label ng-hide="myForm.contact.$error.required">Email <input type="email" ng-model="user.email" name="email" required></label>
+        <label ng-hide="myForm.email.$error.required">Password <input type="password" ng-model="user.password"></label>
+        <input type="submit">
+
+
+    </form>
+</body>
+
+<script src="../js/angular.min.js"></script>
+<script>
+var app=angular.module("myModule",[]);
+app.controller("myController",function($scope){
+$scope.test=function()
+{
+    console.log("I will run on submit");
+
+    console.log($scope.myForm.$error.pattern);
+    console.log($scope.myForm.contact.$error.pattern)
+    //console.log($scope.myForm.gen);
+    //console.log($scope.gender);
+    // if($scope.myForm.$error.email)
+    // {
+    //     console.log("Sorry Bro Wrong email");
+    // }
+    // else
+    // {
+    //     console.log("You can go with it");
+    // }
+}
+})
+
+</script>
+
+</html>
