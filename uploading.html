@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule" ng-controller="myController">
+    <form name="myForm">
+        <input type="file" ng-model="image" name="imageData" upload-image="">
+        <br>
+        <button ng-click="getImage()">Click Me</button>
+        <input type="submit" name="" id="">
+        <br>
+       <img ng-src="{{uri}}" alt="">
+
+
+
+    </form>
+</body>
+<script src="Angular/js/angular.min.js"></script>
+<script>
+
+    angular.module("myModule",[]);
+    angular.module("myModule").controller("myController",function($scope){
+   
+    //     $scope.uploadFile=function(files)
+    //     {
+    //         console.log(files)
+    //         var fr = new FileReader();
+    //         fr.onload = function(){
+    //         var dataURL = fr.result;
+    //         $scope.output=dataURL;
+    // };
+    //         fr.readAsDataURL(files[0]);
+    //         console.log(fr);
+    //         $scope.name=files[0].name;
+    //         var fd = new FormData();
+    //         fd.append("file",files[0]);
+            //console.log(files[0]);
+        
+
+    });
+
+    angular.module("myModule").directive("uploadImage",function(){
+        function link (scope,element,atter)
+        {
+            element.bind("change",function(ev){
+                console.log(ev.target.files);
+                var reader = new FileReader();
+                reader.onload = function(loadEvent) {
+                    console.log(loadEvent.target.result);
+                    scope.uri=loadEvent.target.result;
+                }
+                reader.readAsDataURL(ev.target.files[0]);
+            });
+        };
+        return {
+            "link":link
+        }
+    })
+</script>
+</html>

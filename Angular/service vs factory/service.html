@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule">
+    <div ng-controller="myControler">
+        Name:- {{name}}
+    </div>
+
+</body>
+
+
+<script src="../js/angular.min.js"></script>
+
+<script>
+
+(function(angular)
+{
+angular.module("myModule",[]);
+
+// ----------------------------------
+
+angular.module("myModule").service("testService",function(){
+this.name="Web Bhumi";
+
+});
+
+// ------------------------------------
+
+angular.module("myModule").controller("myControler",function($scope,testService){
+$scope.name=testService.name;
+
+})
+
+})(window.angular);
+
+</script>
+</html>

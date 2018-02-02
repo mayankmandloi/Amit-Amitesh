@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule">
+    <div ng-controller="myControler">
+    <span ng-show="isSelected=='Selected'">Congrats</span> <span ng-show="isSelected=='Rejected'">Sorry</span> name:- {{name}} and {{age}} years old and you are {{isSelected}}
+    </div>
+</body>
+
+
+<script src="../js/angular.min.js"></script>
+
+<script>
+
+    (function(angular){
+        angular.module("myModule",[]);
+
+        // ------------------------------------
+
+        angular.module("myModule").factory("testFactory",function(){
+
+            var someObj= {};
+            someObj.name="Web Bhumi";
+            return someObj;
+
+        });
+
+// -------------------------------------------------------
+
+angular.module("myModule").factory("age",function(){
+
+           return 26;
+        });
+
+// -------------------------------------------------------
+
+
+angular.module("myModule").factory("getSelected",function(){
+
+           function selected(number)
+           {
+                if(number<=(Math.random()*100))
+                {
+                    return "Selected";
+                }
+                else
+                {
+                    return "Rejected";
+                }
+           }
+           return selected
+        });
+       
+
+// -------------------------------------------------------
+
+
+angular.module("myModule").controller("myControler",function($scope,testFactory,age,getSelected){
+
+$scope.isSelected=getSelected(age);
+$scope.name=testFactory.name;
+$scope.age=age;
+
+})
+
+    })(window.angular)
+</script>
+</html>
