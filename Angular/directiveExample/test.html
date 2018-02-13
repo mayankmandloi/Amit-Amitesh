@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule">
+    <ha></ha>
+</body>
+<script src="../js/angular.min.js"></script>
+<script>
+    (function(angular){
+
+        var app= angular.module("myModule",[]);
+        // app.directive("ha",function(){
+        //         var config={
+        //             template:"<h1>Hello</h1>"
+        //         }
+        //         //return config;
+        // })
+
+        app.component("ha",{
+                    template:"<h1>Hello</h1>"
+                });
+    })(window.angular)
+</script>
+</html>

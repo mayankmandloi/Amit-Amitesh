@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="mainModule" ng-controller="mainController">
+    
+    <h3>4. Animate and Cancel</h3>
+    <br />
+    <strong>NOTE:</strong> this point doesn't work properly on Firefox due to this bug https://bugzilla.mozilla.org/show_bug.cgi?id=830056<br />
+    <br />
+    <button type="button" ng-click="onStartLongAnimationClick()">Start long animation</button><br />
+    <button type="button" ng-click="onCancelLongAnimationStepClick()">Cancel current long animation step</button><br />
+    <br />
+    <strong>Long animation state:</strong> {{longAnimationStateBox4}}<br />
+    <br />
+    <div id="box4" class="invisible-box"></div>
+    <br />
+</body>
+</html>

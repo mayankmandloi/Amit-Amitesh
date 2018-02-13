@@ -28,7 +28,7 @@ app.directive("fileUpload",function(){
         link:function(scope,element)
         {
             //console.log(element[0]);
-            element.bind("change",function(eve){
+            element.on("change",function(eve){
                     //console.log(eve.target.files);
                     reader = new FileReader();
                     reader.onloadend = function(eve1)

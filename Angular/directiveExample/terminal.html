@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myModule">
+    <div d1="" d2="" d3="" d4=""></div>
+    <!-- <div my-directive1 my-directive2 my-directive3></div> -->
+</body>
+<script src="../js/angular.min.js"></script>
+<script>
+    var app=angular.module("myModule",[]);
+    app.directive("d1",function(){
+        return {
+            //template:"<h1> Hello1 </h1>",
+            priority:1,
+            link:function()
+            {
+                console.log("d1");
+            }
+            
+        }
+    })
+    app.directive("d2",function(){
+        return {
+            //template:"<h1> Hello2 </h1>",
+            priority:2,
+            link:function()
+            {
+                console.log("d2");
+            }
+            
+        }
+    })
+    app.directive("d3",function(){
+        return {
+            //template:"<h1> Hello3 </h1>"
+            priority:3,
+            link:function()
+            {
+                console.log("d3");
+            },
+            terminal:true   
+        }
+    })
+    app.directive("d4",function(){
+        return {
+            //template:"<h1> Hello4 </h1>"
+            priority:4,
+            link:function()
+            {
+                console.log("d4");
+            }
+        }
+    });
+
+    app.directive('myDirective1', function() {
+    return {
+        priority: 1,
+        terminal: false,
+        link: function() {
+            console.log("I'm myDirective1");
+        }
+    }
+});
+
+app.directive('myDirective2', function() {
+    return {
+        priority: 10,
+        terminal: true,
+        link: function() {
+            console.log("I'm myDirective2");
+        }
+    }
+});
+
+app.directive('myDirective3', function() {
+    return {
+        priority: 100,
+        terminal: false,
+        link: function() {
+            console.log("I'm myDirective3");
+        }
+    }
+});
+</script>
+</html>

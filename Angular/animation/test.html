@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-animate.js"></script>
+    <style>
+    .animate-repeat {
+  line-height:30px;
+  list-style:none;
+  box-sizing:border-box;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+  transition:all linear 0.5s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+  opacity:0;
+  max-height:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity:1;
+  max-height:30px;
+}
+    </style>
+    <title>Document</title>
+</head>
+<body ng-app="myModule">
+    <div ng-controller="myController as myc">
+        <input type="text" ng-model="data.name"><br>
+        <input type="text" ng-model="data.number">
+        <button ng-click="myc.addData(data)">Save</button>
+
+        <div>
+            <p ng-repeat="d in myc.someArray" class="animate-repeat">Name {{d.name}} & number {{d.number}}</p>
+        </div>
+
+    </div>
+</body>
+<script>
+
+    var app=angular.module("myModule",["ngAnimate"]);
+    app.controller("myController",function(){
+
+        var that=this;
+        this.someArray=[{name:"Mayank",number:"1"},{name:"Amitesh",number:"2"},{name:"Amit",number:"3"}];
+        this.addData=function(data)
+        {
+            
+            that.someArray.push(angular.copy(data));
+        }
+    })
+</script>
+</html>

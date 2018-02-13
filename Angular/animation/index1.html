@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+        <script src="../js/angular.js"></script>
+        <script src="../js/angular-animate.js"></script>
+        <script src="script1.js"></script>
+      
+        <link rel="stylesheet" href="style.css">
+      </head>
+<body ng-app="myModule" ng-controller="myController">
+    <h3>2. Move</h3>
+    <button type="button" ng-click="onMoveSquaresClick()">Move the squares</button><br />
+    <br />
+    <strong>Move animation state:</strong> {{moveAnimationState}}<br />
+    <br />
+    <span id="moveLeftmostElement"></span>
+    <div id="blueBox" class="box animated-element" style="background-color: lightskyblue; display: inline-block; margin-left: 5px; margin-right: 5px;"></div>
+    <div id="redBox" class="box animated-element" style="background-color: lightcoral; display: inline-block; margin-left: 5px; margin-right: 5px;"></div>
+    <div id="greenBox" class="box animated-element" style="background-color: lightgreen; display: inline-block; margin-left: 5px; margin-right: 5px;"></div>
+</body>
+</html>

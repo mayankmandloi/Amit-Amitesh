@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../js/angular.js"></script>
+  <script src="../js/angular-animate.js"></script>
+  <script src="script.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-app="myApp" ng-controller="myController">
+  <h3>1. Enter and Leave</h3>
+  <button type="button" ng-click="onAddSquareClick(false)">Add the square as a child (Enter)</button><br />
+  <button type="button" ng-click="onAddSquareClick(true)">Add the square as a sibling (Enter)</button><br />
+  <button type="button" ng-click="onRemoveSquareClick()">Remove the square (Leave)</button><br />
+  <br />
+  <strong>Enter animation state:</strong> {{enterAnimationStateBox1}}<br />
+  <strong>Leave animation state:</strong> {{leaveAnimationStateBox1}}<br />
+  <br />
+  <div id="box1Parent" class="box"></div>
+  <br />
+  
+  <br />
+  
+
+  <h3>5. Enable/Disable animations</h3>
+  <label>Enable animations:
+    <input id="enableAnimationsCheck"
+           type="checkbox"
+           ng-model="areAnimationsEnabled"
+           ng-change="enableDisableAnimations(areAnimationsEnabled)" />
+  </label><br />
+  <br />
+</body>
+</html>
