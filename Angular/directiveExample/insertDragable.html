@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="mainDiv" id="main">
+        <button ng-click="showBox('h1')">Add H1</button>
+        <div ng-show="createElement">
+            <input type="number" ng-model="ele.height" placeholder="height">
+            <input type="number" ng-model="ele.width" placeholder="width">
+            <button ng-click="addElement()">OK</button>
+
+        </div>
+    </div>
+</body>
+<script src="../js/angular.min.js"></script>
+<script src="../js/angular-animate.min.js"></script>
+
+<script>
+var app = angular.module("myApp",["ngAnimate"]);
+app.controller("mainDiv",function($scope,$animate,$document){
+    var element;
+    $scope.showBox= function(eleName){
+        element=document.createElement(eleName);
+        $scope.createElement=true;
+    }
+    $scope.addElement=function(){
+        var startX = 0, startY = 0, x = 0, y = 0;
+       // var eleName=window.prompt("Enter name of Element");
+        //element=document.createElement(eleName);
+        element.style.height=$scope.ele.height+"px";
+        element.style.width=$scope.ele.width+"px";
+        element.style.display="inline-block";
+        // element.style.border="1px solid black";
+        element.style.position="relative"
+        element.setAttribute("draggable",true);
+        element.setAttribute("editable",true);
+        var textArea=document.createElement("textarea");
+        textArea.style.width="100%";
+        textArea.style.height="100%";
+        element.appendChild(textArea);
+        angElement=angular.element(element);
+        angElement.on("mousedown",function(event){
+                    //event.preventDefault();
+                    startX=event.screenX-x;
+                    startY=event.screenY-y;
+                    console.log(startX+" "+startY);
+                    $document.on('mousemove', mousemove);
+                    $document.on('mouseup', mouseup);
+                });
+                function mousemove(event) {
+                    y = event.screenY - startY;
+                    x = event.screenX - startX;
+                    angElement.css({
+                      top: y + 'px',
+                      left:  x + 'px'
+                    });
+                  };
+
+                  function mouseup() {
+      $document.off('mousemove', mousemove);
+      $document.off('mouseup', mouseup);
+    }
+        $animate.enter(angElement,angular.element(document.getElementById("main")));
+        $scope.createElement=false;
+    }
+
+})
+</script>
+</html>

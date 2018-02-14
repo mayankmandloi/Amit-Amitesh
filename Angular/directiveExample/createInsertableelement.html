@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="mainDiv" id="main">
+        <button ng-click="showBox()">Add element</button>
+        <div ng-show="createElement">
+            <input type="number" ng-model="ele.height" placeholder="height">
+            <input type="number" ng-model="ele.width" placeholder="width">
+            <button ng-click="addElement()">OK</button>
+
+        </div>
+    </div>
+</body>
+<script src="../js/angular.min.js"></script>
+<script src="../js/angular-animate.min.js"></script>
+
+<script>
+var app = angular.module("myApp",["ngAnimate"]);
+app.controller("mainDiv",function($scope,$animate){
+    var element;
+    $scope.showBox= function(){
+        $scope.createElement=true;
+    }
+    $scope.addElement=function(){
+        var eleName=window.prompt("Enter name of Element");
+        element=document.createElement(eleName);
+        element.style.height=$scope.ele.height+"px";
+        element.style.width=$scope.ele.width+"px";
+        element.style.display="inline-block";
+        element.style.border="1px solid black";
+        angElement=angular.element(element);
+        $animate.enter(angElement,angular.element(document.getElementById("main")));
+        $scope.createElement=false;
+    }
+
+})
+</script>
+</html>
