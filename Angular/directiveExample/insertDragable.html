@@ -6,15 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body ng-app="myApp">
-    <div ng-controller="mainDiv" id="main">
-        <button ng-click="showBox('h1')">Add H1</button>
-        <div ng-show="createElement">
-            <input type="number" ng-model="ele.height" placeholder="height">
-            <input type="number" ng-model="ele.width" placeholder="width">
-            <button ng-click="addElement()">OK</button>
+<body ng-app="myApp" ng-controller="mainDiv">
+    <div  id="main" style="overflow: hidden;height: 400px;">
+        
+        
+    </div>
+    <button ng-click="showBox('h1')">Add H1</button>
+    <div ng-show="createElement">
+        <input type="number" ng-model="ele.height" placeholder="height">
+        <input type="number" ng-model="ele.width" placeholder="width">
+        <button ng-click="addElement()">OK</button>
 
-        </div>
     </div>
 </body>
 <script src="../js/angular.min.js"></script>

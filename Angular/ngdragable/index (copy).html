@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular Drag And Drop</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <style>    
+    .nav-tabs .nav-link{
+       color: #ffffff;
+    }
+    .tab-content{
+        height: 90%;
+        background: #fff;
+    }
+    .drop-container{
+    height: 100%;
+    min-height: 80px;
+    max-height: 650px;
+    overflow: auto;
+    box-shadow: 3px 2px 9px 1px #eee;
+    border: 1px dashed #00a1ff;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+    }
+    .drop-container:hover{
+        border: 1px solid #00a1ff;
+        box-shadow: 4px 3px 9px 1px #dddddd;
+    }
+    .struc{
+        border: 1px solid #fff;
+    }
+    .struc:hover{
+        border: 1px dashed #fff;
+    }
+    </style>
+</head>
+<body ng-app="myApp">
+    <header class=""></header>
+    <section class="container-fluid" ng-controller="mainDiv" id="main">
+        <div class="row">
+            <div class="col-8 bg-light pt-3 pb-3">
+              <div class="container">
+                  <div class="col-10 bg-white mx-auto box shadow drop-container text-center text-muted" id="target"  style="height:500px"><p class="mt-4">Drag Content Here</p></div>
+              </div>
+            </div>
+            <div class="col-4 bg-secondary pt-3 pb-3">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Structure</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Component</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Style</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="container pt-2">
+                        <!-- grid component start -->
+                            <!-- single row -->
+                            <div class="row mb-1 text-center" draggable="true" test="">
+                                <div class="col mt-2 mb-2 ml-2 mr-2 pt-3 pb-3 bg-secondary text-white struc" >Single Row</div>
+                            </div>
+                            <!-- row with 2 column -->
+                            <div class="row mt-1 mb-1 text-center" draggable="true" test="">
+                                <div class="col mt-2 mb-2 mr-2 ml-2 pt-3 pb-3 bg-secondary text-white struc">Column 1</div>
+                                <div class="col mt-2 mb-2 mr-2 ml-2 pt-3 pb-3 bg-secondary text-white struc">Column 2</div>
+                            </div>
+                            <!-- row with 3 column -->
+                            <div class="row mt-1 mb-1 text-center" draggable="true" test="">
+                                    <div class="col mt-2 mb-2 mr-2 ml-2 pt-3 pb-3 bg-secondary text-white struc">Column 1</div>
+                                    <div class="col mt-2 mb-2 mr-2 ml-2 pt-3 pb-3 bg-secondary text-white struc">Column 2</div>
+                                    <div class="col mt-2 mb-2 mr-2 ml-2 pt-3 pb-3 bg-secondary text-white struc">Column 3</div>
+                            </div>
+                            <!-- row with 1-3 column -->
+                            <div class="row mt-1 mb-1 text-center" draggable="true" test="">
+                                    <div class="col mt-2 mb-2 mr-2 ml-2 pt-3 pb-3 bg-secondary text-white struc">Column 1</div>
+                                    <div class="col-8 mt-2 mb-2 mr-2 ml-2 pt-3 pb-3 bg-secondary text-white struc">Column 2</div>
+                            </div>
+                            <!-- row with 3-1 column -->
+                            <div class="row mt-1 mb-1 text-center" draggable="true" test="">
+                                    <div class="col-8 mt-2 mb-2 mr-2 ml-2 pt-3 pb-3 bg-secondary text-white struc">Column 1</div>
+                                    <div class="col mt-2 mb-2 mr-2 ml-2 pt-3 pb-3 bg-secondary text-white struc">Column 2</div>
+                            </div>
+                        <!-- grid component end -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                  </div>
+                </div>
+        </div>
+    </section>
+    <footer></footer>
+    <script>
+        var app = angular.module("myApp",["ngAnimate"]);
+        app.controller("mainDiv",function($scope,$animate,$document){
+            var element;
+            $scope.showBox= function(eleName){
+                element=document.createElement(eleName);
+                $scope.createElement=true;
+            }
+            
+        });
+        app.directive("test",function($document,$animate,lastElement){
+            var startX = 0, startY = 0, x = 0, y = 0;
+            var angElement;
+            function mousemove(event) {
+                    console.log(event);
+                            y = event.screenY - startY;
+                            x = event.screenX - startX;
+                            angElement.css({
+                              top: y + 'px',
+                              left:  x + 'px'
+                            });
+                          };
+                          function mouseup() {
+              $document.off('mousemove', mousemove);
+              $document.off('mouseup', mouseup);
+            }
+            function mouseup(event){
+                                tar=angular.element(event.target);
+                                if(tar[0].id=="target")
+                                {
+                                    var newElement =angular.copy(angElement)
+
+                                  angular.element(newElement).on("mouseover",function(event){
+                                 lastElement.element=angular.element(event.currentTarget)[0];
+                                 console.log(lastElement.element);
+                            });
+                               // lastElement.element=newElement;
+                                }   
+
+                                $animate.enter(newElement,tar,lastElement.element);
+                               
+                                $document.off('mousemove', mousemove);
+                                $document.off('mouseup', mouseup);
+                            }
+             function mousemove (event){
+                                // angular.element(event.target).css({border:"1px solid blue",
+                                // backgroundColor:"red"});
+                                tar=angular.element(event.target);
+                            }
+            return {
+                link:function(scope,ele,attrs)
+                {
+                    console.log(ele)
+                    
+                    ele.on("mousedown",function(event){
+                        
+                            //event.preventDefault();
+                            angElement=event.currentTarget;
+                            startX=event.screenX-x;
+                            startY=event.screenY-y;
+                            // console.log(startX+" "+startY);
+                            $document.on('mousemove',mousemove);
+                            $document.on('mouseup',mouseup );
+                        });
+                }
+            }
+        })
+        app.service("lastElement",function(){
+            return {element:null};
+        })
+
+        </script>
+</body>
+</html>
